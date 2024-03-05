@@ -1,9 +1,9 @@
-package com.example.loosecoupling;
+package com.example.loosecoupling.helloworld;
 
 
-import com.example.loosecoupling.game.GameRunner;
-import com.example.loosecoupling.game.PacmanGame;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.util.Arrays;
 
 public class App02HelloWorldSpring {
     public static void main(String[] args) {
@@ -21,5 +21,15 @@ public class App02HelloWorldSpring {
         System.out.println(context.getBean("address2"));
         // get the bean using class
         System.out.println(context.getBean(Address.class));
+
+        System.out.println(context.getBean(Person.class));
+
+        // get the bean using parameters
+        System.out.println(context.getBean("person3Parameters"));
+        // get all beans
+        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out :: println);
+
+        // use qualifier
+        System.out.println(context.getBean("person5Qualifier"));
     }
 }
