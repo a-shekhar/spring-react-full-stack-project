@@ -1,8 +1,8 @@
 package com.example;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class MongoDbDataService implements DataService{
     @Override
     public int[] retrieveData(){
