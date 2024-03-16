@@ -30,7 +30,7 @@ public class TodoController {
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
     public String showNewTodoPage(ModelMap model) {
         String username = (String)model.get("name");
-        Todo todoObj = new Todo(0, username, "Default Desc", LocalDate.now().plusYears(1), false);
+        Todo todoObj = new Todo(0, username, "", LocalDate.now().plusYears(1), false);
         model.addAttribute("todo", todoObj);
         return "todo";
     }
@@ -42,7 +42,7 @@ public class TodoController {
         }
         // redirect to this page
         todoService.addTodo((String) model.get("name"), todo.getDescription(),
-                LocalDate.now().plusYears(1), false);
+               todo.getTargetDate(), false);
         return "redirect:list-todos";
     }
 
@@ -52,4 +52,30 @@ public class TodoController {
         todoService.deleteById(id);
         return "redirect:list-todos";
     }
+
+    @RequestMapping(value = "update-todo", method = RequestMethod.GET)
+    public String showUpdateTodoPage(@RequestParam int id, ModelMap model){
+        // create binding
+        String username = (String)model.get("name");
+        Todo todoObj = new Todo(0, username, "Default Desc", LocalDate.now().plusYears(1), false);
+        model.addAttribute("todo", todoObj);
+        // find the record
+        Todo todo = todoService.findById(id);
+        model.addAttribute("todo", todo);
+        return "todo";
+    }
+
+    @RequestMapping(value = "update-todo", method = RequestMethod.POST)
+    public String updateTodo(ModelMap model, @Valid Todo todo,  BindingResult result){
+        if(result.hasErrors()){
+            return "todo";
+        }
+        String username = (String)model.get("name");
+        todo.setUsername(username);
+        // redirect to this page
+        todoService.updateTodo(todo);
+        return "redirect:list-todos";
+    }
+
 }
+
