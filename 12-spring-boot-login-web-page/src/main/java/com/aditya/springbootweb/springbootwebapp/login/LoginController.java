@@ -33,6 +33,7 @@ public class LoginController {
 
         if(authenticationService.authenticate(name, password)){
             model.put("name", name);
+            System.out.println("Name is : " + name);
             return "welcome";
         }
 
