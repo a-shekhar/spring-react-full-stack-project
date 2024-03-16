@@ -16,7 +16,7 @@
 							<form:errors path="description" cssClass="text-warning"/>
 				 <form:input type="hidden" path="id"/>
 				 <form:input type="hidden" path="done"/>
-			<input type = "submit" class="btn btn-success"> 
+			<input type = "submit" class="btn btn-success">
 			</form:form>
 		</div>
 

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Service
 public class TodoService {
@@ -14,7 +15,7 @@ public class TodoService {
 
     static {
         todos.add(new Todo(1, "Aditya", "Learn Spring Boot", LocalDate.of(2024, 8, 1), false));
-        todos.add(new Todo(1, "Raj", "Learn Spring Boot", LocalDate.of(2024, 8, 1), false));
+        todos.add(new Todo(2, "Raj", "Learn AWS", LocalDate.of(2024, 8, 1), false));
         todos.add(new Todo(3, "Shekhar", "Learn GCP", LocalDate.of(2025, 1, 3), false));
     }
 
@@ -25,5 +26,11 @@ public class TodoService {
     public void addTodo(String username, String description, LocalDate targetDate, boolean isDone){
         Todo todo = new Todo(++todosCount, username, description, targetDate, isDone);
         todos.add(todo);
+    }
+
+    public void deleteById(int id) {
+        // if condition matches
+        Predicate<? super Todo> predicate = todo -> todo.getId() == id;
+        todos.removeIf(predicate);
     }
 }
