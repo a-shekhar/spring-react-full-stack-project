@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import './Counter.css'
+import {PropTypes} from 'prop-types'
 
 
-export default function Counter(){
+export default function Counter({by}){
 
     // const buttonstyle = {
     //     fontSize:"30px",
@@ -21,7 +22,7 @@ export default function Counter(){
 
     function incrementCounterFunction(){
         //state[1](state[0] + 1)
-        setCount(count + 1)
+        setCount(count + by)
         //console.log(state[0])
         //console.log(state[1])
         //console.log('increment clicked')
@@ -29,7 +30,7 @@ export default function Counter(){
     }
 
     function decrementCounterFunction(){
-        setCount(count - 1)
+        setCount(count - by)
         console.log(count)
     }
 
@@ -37,9 +38,18 @@ export default function Counter(){
         <div className="counter">
             <span className= "count">{count}</span>
             <div>
-                <button className="counterButton" onClick={incrementCounterFunction}>+1</button>
-                <button className="counterButton" onClick={decrementCounterFunction}>-1</button>
+
+                <button className="counterButton" onClick={incrementCounterFunction}>+{by}</button>
+                <button className="counterButton" onClick={decrementCounterFunction}>-{by}</button>
             </div>
         </div>
     )
+}
+
+Counter.propTypes = {
+    by: PropTypes.number 
+}
+
+Counter.defaultProps ={
+    by: 1
 }

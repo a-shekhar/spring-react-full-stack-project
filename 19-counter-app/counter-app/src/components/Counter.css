@@ -1,7 +1,7 @@
 .counterButton {
     font-size:30px;
     background-color: #00a5ab;
-    width : 100px;
+    width : 80px;
     margin : 10px;
     color : white;
     padding : 15px;
@@ -9,6 +9,6 @@
 }
 
 .count{
-    font-size: 150px;
+    font-size: 50px;
     padding: 20px;
 }
