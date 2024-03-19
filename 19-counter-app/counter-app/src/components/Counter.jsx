@@ -28,13 +28,17 @@ export default function Counter(){
         console.log(count)
     }
 
+    function decrementCounterFunction(){
+        setCount(count - 1)
+        console.log(count)
+    }
+
     return (
         <div className="counter">
             <span className= "count">{count}</span>
             <div>
-                <button className="counterButton" onClick={incrementCounterFunction}
-                // style= {buttonstyle}           
-                >+1</button>
+                <button className="counterButton" onClick={incrementCounterFunction}>+1</button>
+                <button className="counterButton" onClick={decrementCounterFunction}>-1</button>
             </div>
         </div>
     )
