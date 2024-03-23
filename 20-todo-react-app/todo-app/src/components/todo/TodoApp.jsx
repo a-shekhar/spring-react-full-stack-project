@@ -1,19 +1,24 @@
 import { useState } from 'react'
 import './TodoApp.css'
-import { BrowserRouter, Route, Routes, useNavigate, useParams} from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useNavigate, useParams, Link} from 'react-router-dom'
 
 export default function TodoApp(){
     return(
         <div className="TodoApp">
+            <HeaderComponent />
+
             <BrowserRouter>
                 <Routes>
                     <Route path = '/' element ={<LoginComponent/>}></Route>
                     <Route path = '/login' element ={<LoginComponent/>}></Route>
-                    {/* <Route path = '/welcome/:username' element ={<WelcomeComponent/>}></Route> */}
+                    <Route path = '/welcome/:username' element ={<WelcomeComponent/>}></Route>
                     <Route path = '/todos' element ={<ListTodosComponent/>}/>
+                    <Route path = '/logout' element ={<LogoutComponent/>}/>
                     <Route path = '/*' element ={<ErrorComponent/>}></Route>
                 </Routes>
             </BrowserRouter>
+
+            <FooterComponent />
         </div>
     )
 }
@@ -93,7 +98,7 @@ function WelcomeComponent(){
     <div>
         <h1> Weclome to {username}'s world!</h1>
         <div className="Welcome">
-            Welcome Component
+            Manage Your todos. <Link to="/todos">Go here</Link>
         </div>
 
         </div>
@@ -123,10 +128,10 @@ function ListTodosComponent(){
     {id : 3, description : 'Learn GCP',  done : false, targetDate: targetDate}
     ]
     return(
-        <div className="ListTodosComponent">
+        <div className="container">
            <h1>Things you want to do!</h1>
            <div>
-             <table>
+             <table className='table'>
                 <thead>
                     <tr>
                         <td>ID</td>
@@ -148,6 +153,37 @@ function ListTodosComponent(){
                     }
                 </tbody>
              </table>
+           </div>
+        </div>
+    )
+}
+
+function HeaderComponent(){
+    return(
+        <div className="HeaderComponent">
+           <div>
+             Header <hr/>
+           </div>
+        </div>
+    )
+}
+
+function FooterComponent(){
+    return(
+        <div className="FooterComponent">
+           <div>
+             <hr/> Footer
+           </div>
+        </div>
+    )
+}
+
+function LogoutComponent(){
+    return(
+        <div className="LogoutComponent">
+            <h1>You are logged out!</h1>
+           <div>
+             Thank you for using our App. Come back soon!
            </div>
         </div>
     )
