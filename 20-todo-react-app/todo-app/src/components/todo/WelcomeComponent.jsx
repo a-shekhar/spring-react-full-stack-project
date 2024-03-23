@@ -3,7 +3,7 @@ import {useParams, Link} from 'react-router-dom'
 export default function WelcomeComponent(){
     const {username} = useParams()
    // console.log(params.username)
-   console.log(username)
+  // console.log(username)
     return(
     <div>
         <h1> Welcome to {username}'s world!</h1>
