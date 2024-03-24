@@ -10,7 +10,7 @@ export default function HeaderComponent(){
     //console.log(authContext.number)
 
     const isAuthenticated = authContext.isAuthenticated
-    console.log(authContext)
+    //console.log(authContext)
 
     function logout(){
         authContext.logout()
